@@ -506,6 +506,19 @@ a { color: inherit; }
   letter-spacing: 0.01em;
 }
 
+.logo-mark--img {
+  background: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+.logo-mark--img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .logo-mark--bsc  { background: linear-gradient(135deg, #d9a441, #b3791f); }
 .logo-mark--zero { background: linear-gradient(135deg, #2fb8a6, #1b7a6e); }
 .logo-mark--dto  { background: linear-gradient(135deg, #ef6f5a, #c14834); font-size: 1.05rem; }
