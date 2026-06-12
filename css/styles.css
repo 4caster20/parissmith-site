@@ -206,6 +206,37 @@ a { color: inherit; }
   position: relative;
   z-index: 1;
   padding-top: var(--nav-h);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 56px;
+}
+
+.hero__portrait {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 400px);
+}
+
+.hero__portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+  border: 1px solid rgba(217, 164, 65, 0.35);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+.hero__portrait::after {
+  content: "";
+  position: absolute;
+  inset: -18px -18px auto auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 164, 65, 0.35), transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
 }
 
 .hero__eyebrow {
@@ -421,7 +452,8 @@ a { color: inherit; }
 }
 
 .card-grid--orgs { grid-template-columns: repeat(2, 1fr); }
-.card-grid--invest { grid-template-columns: repeat(4, 1fr); }
+.card-grid--invest { grid-template-columns: repeat(5, 1fr); }
+.card-grid--pods { grid-template-columns: repeat(2, 1fr); }
 
 .card {
   background: var(--bg-card);
@@ -482,6 +514,55 @@ a { color: inherit; }
 .logo-mark--ht   { background: linear-gradient(135deg, #f0654d, #c23d28); }
 .logo-mark--wg   { background: linear-gradient(135deg, #34a4eb, #1f6fb0); }
 .logo-mark--ww   { background: linear-gradient(135deg, #3dbd7d, #248a57); }
+.logo-mark--kero { background: linear-gradient(135deg, #f0b429, #d98014); }
+
+/* ---------- Podcasts ---------- */
+
+.podcasts { background: var(--bg-elevated); }
+
+.pod {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pod__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.pod__badge {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(217, 164, 65, 0.14);
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+
+.pod__host {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pod__link {
+  margin-top: 18px;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: color 0.2s ease;
+}
+
+.pod:hover .pod__link { color: var(--gold-soft); }
 
 /* ---------- Contact ---------- */
 
@@ -625,6 +706,19 @@ a { color: inherit; }
 @media (max-width: 960px) {
   .section { padding: 84px 0; }
 
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+    padding-top: calc(var(--nav-h) + 16px);
+  }
+
+  .hero__portrait { order: -1; width: min(72%, 280px); }
+
+  .hero__sub { margin-left: auto; margin-right: auto; }
+
+  .hero__actions { justify-content: center; }
+
   .about__grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -637,7 +731,7 @@ a { color: inherit; }
 
   .philosophy__traits { grid-template-columns: repeat(2, 1fr); }
 
-  .card-grid--invest { grid-template-columns: repeat(2, 1fr); }
+  .card-grid--invest { grid-template-columns: repeat(3, 1fr); }
 
   .contact__inner {
     grid-template-columns: 1fr;
@@ -690,11 +784,15 @@ a { color: inherit; }
   .nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 }
 
+@media (max-width: 720px) {
+  .card-grid--pods { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 600px) {
   .about__facts { grid-template-columns: 1fr; }
   .philosophy__traits { grid-template-columns: 1fr; }
   .card-grid--orgs { grid-template-columns: 1fr; }
-  .card-grid--invest { grid-template-columns: 1fr; }
+  .card-grid--invest { grid-template-columns: repeat(2, 1fr); }
   .form__row { grid-template-columns: 1fr; }
   .contact__form { padding: 28px 22px; }
   .footer__inner { justify-content: center; text-align: center; }
